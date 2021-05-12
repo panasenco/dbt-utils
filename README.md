@@ -418,6 +418,21 @@ An optional `quote_columns` parameter (`default=false`) can also be used if a co
         quote_columns: true
 ```
 
+The macro accepts an optional parameter `condition` that allows for asserting
+the combination of columns is unique for a subset of rows.
+
+Usage:
+```yaml
+- name: revenue_by_product_by_month
+  tests:
+    - dbt_utils.unique_combination_of_columns:
+        combination_of_columns:
+          - month
+          - group
+        condition: "_deleted = false"
+```
+
+
 ---
 ### SQL helpers
 #### get_query_results_as_dict ([source](macros/sql/get_query_results_as_dict.sql))
